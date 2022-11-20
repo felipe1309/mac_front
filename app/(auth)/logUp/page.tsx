@@ -1,9 +1,11 @@
-import React from 'react'
+import FormLogUp from "../../../components/forms/FormLogUp";
 
 const page = () => {
   return (
-    <div>page</div>
-  )
-}
+    <>
+      <FormLogUp />
+    </>
+  );
+};
 
-export default page
+export default page;

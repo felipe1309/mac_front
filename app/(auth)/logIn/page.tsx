@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import FormLogIn from "../../../components/forms/FormLogIn";
 
 const page = () => {
   return (
-    <div>page</div>
-  )
-}
+    <>
+      <FormLogIn />
+    </>
+  );
+};
 
-export default page
+export default page;

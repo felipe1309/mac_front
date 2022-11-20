@@ -17,9 +17,6 @@ const layout = ({ children }: layout) => {
       handdleClick,
       state
     }}>
-      <span>{state}</span>
-      <button onClick={handdleClick}>+</button>
-      <h2>layout</h2>
       {children}
     </ContextStore.Provider>
   );
