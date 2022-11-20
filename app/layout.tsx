@@ -1,7 +1,22 @@
+"use client";
 import "./globals.css";
 import { layout } from "../types/layout";
 import Navbar from "../components/Navbar";
+import { createContext } from "react";
+import { useAuthData } from "../hooks/useAuthData";
+import { auth } from "../types/auth";
+import { userDataContext } from "../types/user";
+type contextGlobalUser = {
+  authData: auth;
+  logAuth: (token: string) => void;
+  userState: userDataContext | null;
+};
+export const ContextGlobalUser = createContext<contextGlobalUser>(
+  {} as contextGlobalUser
+);
 export default function RootLayout({ children }: layout) {
+  const { authData, logAuth, userState } = useAuthData();
+  const value: contextGlobalUser = { authData, logAuth, userState };
   return (
     <html lang="es">
       {/*
@@ -10,8 +25,10 @@ export default function RootLayout({ children }: layout) {
       */}
       <head />
       <body>
-        <Navbar />
-        {children}
+        <ContextGlobalUser.Provider value={value}>
+          <Navbar />
+          {children}
+        </ContextGlobalUser.Provider>
       </body>
     </html>
   );

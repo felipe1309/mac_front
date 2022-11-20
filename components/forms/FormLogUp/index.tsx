@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 // types
 import type { userDataLog } from "../../../types/user";
 import InputAuthForLogUp from "../../Inputs/InputAuthForLofUp";
+import { useContextUser } from "../../../hooks/useContextUser";
 export type userDataLogUpForm = userDataLog & {
   confirmPassword: string;
 };
@@ -17,6 +18,7 @@ const FormLogUp = () => {
     watch,
     formState: { errors },
   } = useForm<userDataLogUpForm>();
+  const { logAuth } = useContextUser();
   useEffect(() => {
     if (window.localStorage.getItem("x-acces-token")) {
       router.replace("/");
@@ -35,6 +37,7 @@ const FormLogUp = () => {
       password,
     });
     window.localStorage.setItem("x-acces-token", dataLogUp.token);
+    logAuth(dataLogUp.token);
     router.push("/");
   };
   return (

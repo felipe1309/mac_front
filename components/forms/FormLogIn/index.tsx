@@ -5,6 +5,7 @@ import type { userDataLog } from "../../../types/user";
 import InputAuthForLogIn from "../../Inputs/InputAuthForLogIn";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { useContextUser } from "../../../hooks/useContextUser";
 export type userDataLogInForm = Omit<userDataLog, "name">;
 const FormLogIn = () => {
   const router = useRouter();
@@ -14,6 +15,7 @@ const FormLogIn = () => {
     watch,
     formState: { errors },
   } = useForm<userDataLogInForm>();
+  const { logAuth } = useContextUser();
   useEffect(() => {
     if (window.localStorage.getItem("x-acces-token")) {
       router.replace("/");
@@ -22,8 +24,9 @@ const FormLogIn = () => {
 
   const onSubmit: SubmitHandler<userDataLogInForm> = async (data) => {
     const dataLogIn = await logIn(data);
-    console.log(data)
+    console.log(data);
     window.localStorage.setItem("x-acces-token", dataLogIn.token);
+    logAuth(dataLogIn.token);
     router.push("/");
   };
   return (
