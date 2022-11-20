@@ -6,4 +6,5 @@ export interface product {
   name: string;
   value: number;
   image: image;
+  _id: string;
 }
