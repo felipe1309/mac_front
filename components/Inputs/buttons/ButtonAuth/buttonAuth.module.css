@@ -1,0 +1,8 @@
+.button {
+    height: 2.5rem;
+    width: max-content;
+    padding: 5px 15px;
+    border-radius: var(--br-01);
+    border: 3px solid var(--primary-color);
+    cursor: pointer;
+}

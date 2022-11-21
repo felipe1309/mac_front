@@ -1,0 +1,16 @@
+.input_container {
+    margin-bottom: 15px;
+}
+.input_auth {
+    width: 100%;
+    height: 2.5rem;
+    outline: none;
+    border: none;
+    background: var(--body-color);
+    border-radius: var(--br-02);
+    padding: 0 15px;
+}
+.input_auth:focus {
+    outline: 3px solid var(--primary-color);
+    background: var(--sidebar-color);
+}

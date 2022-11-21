@@ -1,27 +1,29 @@
 import { HTMLInputTypeAttribute } from "react";
 import { FieldError, UseFormRegister } from "react-hook-form";
-import type { userDataLogUpForm } from "../../forms/FormLogUp";
+import { userDataLogInForm } from "../../../forms/formAuth/FormLogIn";
+import styles from "../inputAuth.module.css"
 type props = {
   type: HTMLInputTypeAttribute;
-  name: "name" | "password" | "email" | "confirmPassword";
-  register: UseFormRegister<userDataLogUpForm>;
+  name: "password" | "email";
+  register: UseFormRegister<userDataLogInForm>;
   message: string;
   placeholder: string;
-  errorName:FieldError | undefined
-  errorMessage:string | undefined
+  errorName: FieldError | undefined;
+  errorMessage: string | undefined;
 };
-const InputAuthForLogUp = ({
+const InputAuthForLogIn = ({
+  errorMessage,
+  errorName,
   message,
   name,
   placeholder,
   register,
   type,
-  errorName,
-  errorMessage
 }: props) => {
   return (
-    <div>
+    <div className={styles.input_container}>
       <input
+      className={styles.input_auth}
         type={type}
         {...register(name, {
           required: message,
@@ -33,4 +35,4 @@ const InputAuthForLogUp = ({
   );
 };
 
-export default InputAuthForLogUp;
+export default InputAuthForLogIn;

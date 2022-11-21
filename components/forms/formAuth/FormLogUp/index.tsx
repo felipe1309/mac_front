@@ -1,12 +1,15 @@
 "use client";
 import { useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { logUp } from "../../../services/auth/logUp";
+import { logUp } from "../../../../services/auth/logUp";
 import { useRouter } from "next/navigation";
+// styles
+import styles from "../formAuth.module.css";
 // types
-import type { userDataLog } from "../../../types/user";
-import InputAuthForLogUp from "../../Inputs/InputAuthForLofUp";
-import { useContextUser } from "../../../hooks/useContextUser";
+import type { userDataLog } from "../../../../types/user";
+import InputAuthForLogUp from "../../../Inputs/InputAuth/InputAuthForLofUp";
+import { useContextUser } from "../../../../hooks/useContextUser";
+import { ButtonAuth } from "../../../Inputs/buttons/ButtonAuth";
 export type userDataLogUpForm = userDataLog & {
   confirmPassword: string;
 };
@@ -41,7 +44,7 @@ const FormLogUp = () => {
     router.push("/");
   };
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form className={styles.formAuth} onSubmit={handleSubmit(onSubmit)}>
       <h1>Registrate!!</h1>
       <InputAuthForLogUp
         register={register}
@@ -70,25 +73,22 @@ const FormLogUp = () => {
         errorMessage={errors.password?.message}
         type="text"
       />
-      <div className="ButomFormAuth">
-        <input
-          type="text"
-          {...register("confirmPassword", {
-            required: "confirmar la contrase;a es necesario",
-            validate: (e) => {
-              if (e === watch("password")) {
-                return true;
-              }
-              return "la contre;a ingresada no es igual";
-            },
-          })}
-          placeholder="confirmar"
-        />
-        {errors.confirmPassword && (
-          <span>{errors.confirmPassword.message}</span>
-        )}
-      </div>
-      <button>Crear cuenta</button>
+      <InputAuthForLogUp
+        message="es necesario corroborar la contrase;a"
+        errorMessage={errors.confirmPassword?.message}
+        errorName={errors.confirmPassword}
+        placeholder="repita la contrase;a"
+        register={register}
+        validate={(e) => {
+          if (e === watch("password")) {
+            return true;
+          }
+          return "la contre;a ingresada no es igual";
+        }}
+        type="password"
+        name="confirmPassword"
+      />
+      <ButtonAuth value="Crear cuenta" />
     </form>
   );
 };

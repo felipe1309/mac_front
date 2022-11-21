@@ -1,8 +1,8 @@
-import FormLogUp from "../../../components/forms/FormLogUp";
-
+import FormLogUp from "../../../components/forms/formAuth/FormLogUp";
+import styles from './logUp.module.css'
 const page = () => {
   return (
-    <div className="container">
+    <div className={styles.container}>
       <FormLogUp />
     </div>
   );

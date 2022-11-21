@@ -1,0 +1,12 @@
+.formAuth {
+  width: 25rem;
+  aspect-ratio: 40/55;
+  background: var(--sidebar-color);
+  border-radius: var(--br-01);
+  padding: 1.5rem;
+}
+
+.formAuth h1 {
+  font-size: var(--fz-01);
+  margin-bottom: 20px;
+}

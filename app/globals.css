@@ -11,16 +11,27 @@
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 :root {
+  /* COLORS */
   --body-color: #e4e9f7;
   --sidebar-color: #fff;
   --primary-color: #695cfe;
   --primary-color-light: #f6f5ff;
   --toggle-color: #ddd;
   --text-color: #707070;
+  /* TRANSITIONS */
   --tran-01: all 0.2s ease;
   --tran-02: all 0.3s ease;
   --tran-03: all 0.4s ease;
   --tran-04: all 0.5s ease;
+  /* BORDER  RADIUAS */
+  --br-01:5px;
+  --br-02:10px;
+  --br-03:15px;
+  /* FONTs */
+  --fz-01:2rem;
+  --fz-02:1.4rem;
+  --fz-03:1.2rem;
+
 }
 
 body {
