@@ -1,6 +1,6 @@
 import { HTMLInputTypeAttribute } from "react";
 import { FieldError, UseFormRegister } from "react-hook-form";
-import type { userDataLogUpForm } from "../../../forms/FormLogUp";
+import type { userDataLogUpForm } from "../../../forms/formAuth/FormLogUp";
 import styles from "../inputAuth.module.css"
 type props = {
   type: HTMLInputTypeAttribute;

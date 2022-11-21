@@ -1,12 +1,12 @@
 import { ProductCardHome } from "../../components/products/ProductCardHome";
 import { getAllProducts } from "../../services/store/getAllProducts";
-import styles from "./homePage.module.css"
+import styles from "./homePage.module.css";
 const page = async () => {
   const products = await getAllProducts();
   return (
     <main className={styles.main}>
+      <h2>products</h2>
       <section className={styles.section}>
-        <h2>products</h2>
         {products?.map(({ _id, image, name, value }) => (
           <ProductCardHome
             _id={_id}
