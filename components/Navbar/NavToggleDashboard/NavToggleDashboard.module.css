@@ -1,0 +1,19 @@
+.toggle_dashboard {
+  bottom: 100%;
+  border-left: 3px solid var(--primary-color) ;
+}
+.li {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+}
+.button {
+  height: 50px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  overflow: hidden;
+}

@@ -27,7 +27,7 @@ export default function RootLayout({ children }: layout) {
       <body>
         <ContextGlobalUser.Provider value={value}>
           <Navbar />
-          {children}
+          <div className="Layout__globalp-pages">{children}</div>
         </ContextGlobalUser.Provider>
       </body>
     </html>

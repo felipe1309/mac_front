@@ -1,0 +1,38 @@
+.navLink {
+  height: 50px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.navLink a {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  transition: var(--tran-04);
+}
+.navLink a:hover {
+  background: var(--primary-color);
+}
+.navLink a:hover path,
+.navLink a:hover span {
+  color: var(--primary-color-light);
+}
+.icon {
+  transform: scale(1.3);
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.text {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-color);
+  }
+.icon path,
+.text {
+  color: var(--text-color);
+  transition: var(--tran-03);
+}

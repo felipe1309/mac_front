@@ -1,0 +1,40 @@
+import { useEffect, useState } from "react";
+import { MdDashboardCustomize } from "react-icons/md";
+import { BsArrowDown } from "react-icons/bs";
+import NavLink from "../NavLink";
+import styles from "./NavToggleDashboard.module.css";
+import stylesGeneric from "../navbarStylesGenerics.module.css";
+
+import { BsPlusSquare } from "react-icons/bs";
+type props = {
+  toggleNav: boolean;
+};
+const NavToggleDashboard = ({ toggleNav }: props) => {
+  const [toggleDashboard, setToggleDashboard] = useState(false);
+  useEffect(() => {
+    if (!toggleNav) {
+      setToggleDashboard(false);
+    }
+  }, [toggleNav]);
+  const haddleToggleDashboard = () => {
+    setToggleDashboard(!toggleDashboard);
+  };
+  return (
+    <li className={styles.li}>
+      <button className={styles.button} onClick={haddleToggleDashboard}>
+        <MdDashboardCustomize className={stylesGeneric.icon} />
+        <span className={stylesGeneric.text}>Configuraciones</span>
+        <BsArrowDown className={stylesGeneric.icon} />
+      </button>
+      {toggleDashboard ? (
+        <ul className={styles.toggle_dashboard}>
+          <NavLink text="Crear Producto" href="/dashboard/createProduct">
+            <BsPlusSquare className={stylesGeneric.icon} />
+          </NavLink>
+        </ul>
+      ) : null}
+    </li>
+  );
+};
+
+export default NavToggleDashboard;

@@ -10,4 +10,33 @@
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
+:root {
+  --body-color: #e4e9f7;
+  --sidebar-color: #fff;
+  --primary-color: #695cfe;
+  --primary-color-light: #f6f5ff;
+  --toggle-color: #ddd;
+  --text-color: #707070;
+  --tran-01: all 0.2s ease;
+  --tran-02: all 0.3s ease;
+  --tran-03: all 0.4s ease;
+  --tran-04: all 0.5s ease;
+}
 
+body {
+  height: 100vh;
+  background: var(--body-color);
+  display: flex;
+  overflow-y: scroll;
+}
+.Layout__globalp-pages {
+  width: 100%;
+  max-height: 100vh;
+  min-height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.Layout__globalp-pages div[data-nextjs-scroll-focus-boundary] {
+  width: 100%;
+  height: 100%;
+}
