@@ -15,7 +15,7 @@
   transition: var(--tran-04);
 }
 .navLink a:hover {
-  background: var(--primary-color);
+  background: var(--green-secondary);
 }
 .navLink a:hover path,
 .navLink a:hover span {

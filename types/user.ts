@@ -3,7 +3,13 @@ export interface user {
   _id: string;
   name: string;
   email: string;
-  password: string;
+  password?: string;
+}
+interface aditionalData {
+  typeAuth: "normal" | "facebook" | "google";
 }
 export type userDataLog = Omit<user, "_id" | "tipo">;
-export type userDataContext = Omit<user, "_id" | "password" | "email">
+export type userDataLogUp = userDataLog & {
+  aditionalData?: aditionalData;
+};
+export type userDataContext = Omit<user, "_id" | "password" | "email">;

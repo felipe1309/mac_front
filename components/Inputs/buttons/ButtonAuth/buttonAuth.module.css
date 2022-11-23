@@ -5,4 +5,5 @@
     border-radius: var(--br-01);
     border: 3px solid var(--primary-color);
     cursor: pointer;
+    display: inline-block;
 }

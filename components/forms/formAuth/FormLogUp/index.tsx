@@ -1,17 +1,20 @@
 "use client";
-import { useEffect } from "react";
+import { FormEvent,  useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { logUp } from "../../../../services/auth/logUp";
 import { useRouter } from "next/navigation";
 // styles
 import styles from "../formAuth.module.css";
 // types
+import { FaGoogle } from "react-icons/fa";
 import type { userDataLog } from "../../../../types/user";
 import InputAuthForLogUp from "../../../Inputs/InputAuth/InputAuthForLofUp";
 import { useContextUser } from "../../../../hooks/useContextUser";
 import { ButtonAuth } from "../../../Inputs/buttons/ButtonAuth";
 import { logUpWhitFacebook } from "../../../../services/auth/logInWhitFacebook";
 import { logUpWhitGoogle } from "../../../../services/auth/logUpWhitGoogle";
+import { ButtonLogAuthWhitFacebook } from "../../../Inputs/buttons/ButtonLogAuthWhitFacebook";
+import { ButtonLogAuthWhitGoogle } from "../../../Inputs/buttons/ButtonLogAuthWhitGoogle";
 export type userDataLogUpForm = userDataLog & {
   confirmPassword: string;
 };
@@ -40,12 +43,16 @@ const FormLogUp = () => {
       email,
       name,
       password,
+      aditionalData: {
+        typeAuth: "normal",
+      },
     });
     window.localStorage.setItem("x-acces-token", dataLogUp.token);
     logAuth(dataLogUp.token);
     router.push("/");
   };
-  const logUpFacebook = () => {
+  const logUpFacebook = (e: FormEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     logUpWhitFacebook()
       .then((data) => {
         console.log(data);
@@ -54,14 +61,21 @@ const FormLogUp = () => {
         console.error(error);
       });
   };
-  const logUpGoogle = () => {
-    logUpWhitGoogle()
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((error) => {
-        console.error(error);
+  const logUpGoogle = async (e: FormEvent<HTMLButtonElement>) => {
+    try {
+      const googleCredentials = await logUpWhitGoogle();
+      const dataTokenLogUpWhitGoogle = await logUp({
+        email: googleCredentials.user.email as string,
+        name: googleCredentials.user.displayName as string,
+        aditionalData: {
+          typeAuth: "google",
+        },
       });
+      window.localStorage.setItem("token", dataTokenLogUpWhitGoogle.token);
+      logAuth(dataTokenLogUpWhitGoogle.token);
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <form className={styles.formAuth} onSubmit={handleSubmit(onSubmit)}>
@@ -109,18 +123,8 @@ const FormLogUp = () => {
         name="confirmPassword"
       />
       <ButtonAuth value="Crear cuenta" />
-      <input
-        type={"button"}
-        onClick={logUpFacebook}
-        value="Registrate con facebook"
-        style={{display:"block"}}
-      />
-      <input
-        type={"button"}
-        onClick={logUpGoogle}
-        value="Registrate con google"
-        style={{display:"block"}}
-      />
+      <ButtonLogAuthWhitFacebook haddleClick={logUpFacebook} />
+      <ButtonLogAuthWhitGoogle haddleClick={logUpGoogle} />
     </form>
   );
 };

@@ -31,7 +31,6 @@ const InputAuthForLogUp = ({
         type={type}
         {...register(name, {
           required: message,
-          validate
         })}
         placeholder={placeholder}
       />

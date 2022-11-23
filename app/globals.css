@@ -18,6 +18,17 @@
   --primary-color-light: #f6f5ff;
   --toggle-color: #ddd;
   --text-color: #707070;
+
+  --blue-secondary: #61dbff;
+  --blue-primary: #0087ff;
+
+  --green-secondary: #00ff17;
+  --green-primary: #009c0e;
+
+  --red-secondary:#FF1313;
+  --red-primary:#C20808;
+  --facebook-promary: #3b5998;
+  --gray-color: #cccccc;
   /* TRANSITIONS */
   --tran-01: all 0.2s ease;
   --tran-02: all 0.3s ease;
@@ -28,9 +39,11 @@
   --br-02: 10px;
   --br-03: 15px;
   /* FONTs */
+  --fz-full: 3rem;
   --fz-01: 2rem;
-  --fz-02: 1.4rem;
-  --fz-03: 1.2rem;
+  --fz-02: 1.6rem;
+  --fz-03: 1.4rem;
+  --fz-04: 1.2rem;
 }
 html {
   overflow: hidden;
