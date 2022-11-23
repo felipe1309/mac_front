@@ -24,21 +24,22 @@
   --tran-03: all 0.4s ease;
   --tran-04: all 0.5s ease;
   /* BORDER  RADIUAS */
-  --br-01:5px;
-  --br-02:10px;
-  --br-03:15px;
+  --br-01: 5px;
+  --br-02: 10px;
+  --br-03: 15px;
   /* FONTs */
-  --fz-01:2rem;
-  --fz-02:1.4rem;
-  --fz-03:1.2rem;
-
+  --fz-01: 2rem;
+  --fz-02: 1.4rem;
+  --fz-03: 1.2rem;
 }
-
+html {
+  overflow: hidden;
+}
 body {
   height: 100vh;
   background: var(--body-color);
   display: flex;
-  overflow-y: scroll;
+  overflow: hidden;
 }
 .Layout__globalp-pages {
   width: 100%;
@@ -46,6 +47,14 @@ body {
   min-height: 100vh;
   overflow-y: scroll;
   overflow-x: hidden;
+}
+.Layout__globalp-pages::-webkit-scrollbar {
+  width: 7px;
+  background: transparent;
+}
+.Layout__globalp-pages::-webkit-scrollbar {
+  background: var(--primary-color);
+  border-radius: 5px;
 }
 .Layout__globalp-pages div[data-nextjs-scroll-focus-boundary] {
   width: 100%;

@@ -1,0 +1,11 @@
+.form {
+    width: 500px;
+    height: 600px;
+    background: var(--sidebar-color);
+    border-radius: var(--br-02);
+    padding: 15px;
+}
+.form h1 {
+    font-size: var(--fz-02);
+    margin: 15px 0;
+}
