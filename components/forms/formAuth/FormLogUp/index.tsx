@@ -11,6 +11,7 @@ import InputAuthForLogUp from "../../../Inputs/InputAuth/InputAuthForLofUp";
 import { useContextUser } from "../../../../hooks/useContextUser";
 import { ButtonAuth } from "../../../Inputs/buttons/ButtonAuth";
 import { logUpWhitFacebook } from "../../../../services/auth/logInWhitFacebook";
+import { logUpWhitGoogle } from "../../../../services/auth/logUpWhitGoogle";
 export type userDataLogUpForm = userDataLog & {
   confirmPassword: string;
 };
@@ -46,6 +47,15 @@ const FormLogUp = () => {
   };
   const logUpFacebook = () => {
     logUpWhitFacebook()
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+  const logUpGoogle = () => {
+    logUpWhitGoogle()
       .then((data) => {
         console.log(data);
       })
@@ -103,6 +113,13 @@ const FormLogUp = () => {
         type={"button"}
         onClick={logUpFacebook}
         value="Registrate con facebook"
+        style={{display:"block"}}
+      />
+      <input
+        type={"button"}
+        onClick={logUpGoogle}
+        value="Registrate con google"
+        style={{display:"block"}}
       />
     </form>
   );
