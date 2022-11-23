@@ -1,10 +1,8 @@
 import axios from "axios";
 import { product } from "../../types/product";
-type dataCreateProduct = {
-  name: string;
-  value: number;
-  image: File;
-};
+export type dataCreateProduct = Omit<product ,'_id'  | 'image'> & {
+  image: File
+}
 export const createProduct = async (
   data: dataCreateProduct,
   token: string
@@ -13,7 +11,6 @@ export const createProduct = async (
     const form = new FormData();
     for (let key in data) {
       form.append(key, data[key]);
-      console.log(form)
     }
     const product = await axios.post(
       "http://localhost:4000/products/addProduct",

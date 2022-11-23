@@ -4,7 +4,7 @@ import { formDataCreateProduct } from "../../forms/FormCreateProduct";
 import styles from "../InputAuth/inputAuth.module.css";
 type props = {
   register: UseFormRegister<formDataCreateProduct>;
-  name: "value" | "name" | "image";
+  name: "value" | "name" | "image" | "description";
   tipo: HTMLInputTypeAttribute;
   placeholder: string;
 };

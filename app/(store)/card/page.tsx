@@ -3,7 +3,7 @@ import { useContextStore } from "../../../hooks/useContextStore"
 const page = () => {
   const {state} = useContextStore()
   return (
-    <div>{state}</div>
+    <div className="card">{state}</div>
   )
 }
 

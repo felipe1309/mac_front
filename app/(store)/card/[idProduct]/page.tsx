@@ -1,5 +1,5 @@
-import React from "react";
 import { getProduct } from "../../../../services/store/getProduct";
+import style from "./cardProduct.module.css";
 type params = {
   idProduct: string;
 };
@@ -9,11 +9,15 @@ type props = {
 const page = async ({ params }: props) => {
   const product = await getProduct(params.idProduct);
   return (
-    <>
-      <h2>{product?.name}</h2>
-      <p>{product?.value}</p>
-      <img src={product?.image.url} alt={product?.image.public_id} />
-    </>
+    <main className={style.main}>
+      <figure>
+        <img src={product?.image.url} alt={product?.image.public_id} />
+      </figure>
+      <div className={style.body}>
+        <h1>{product?.name}</h1>
+        <p>{product?.value}</p>
+      </div>
+    </main>
   );
 };
 
