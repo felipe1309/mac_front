@@ -1,4 +1,6 @@
+import { ButtonAddProductToCard } from "../../../../components/Inputs/buttons/ButtonAddProductToCard";
 import { getProduct } from "../../../../services/store/getProduct";
+import { image } from "../../../../types/product";
 import style from "./cardProduct.module.css";
 type params = {
   idProduct: string;
@@ -15,7 +17,15 @@ const page = async ({ params }: props) => {
       </figure>
       <div className={style.body}>
         <h1>{product?.name}</h1>
-        <p>{product?.value}</p>
+        <p>{product?.description}</p>
+        <span>{product?.value} Cop</span>
+        <ButtonAddProductToCard
+          _id={product?._id as string}
+          description={product?.description as string}
+          image={product?.image as image}
+          name={product?.name as string}
+          value={product?.value as number}
+        />
       </div>
     </main>
   );

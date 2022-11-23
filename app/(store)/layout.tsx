@@ -1,24 +1,21 @@
 "use client";
-import { useState } from "react";
 import { layout } from "../../types/layout";
 import { createContext } from "react";
+import { product } from "../../types/product";
+import { useCard } from "../../hooks/useCard";
 type context = {
-  state:number,
-  handdleClick:()=>void
+  cardState: product[];
+  addProductToCard: (product: product) => void;
 };
 export const ContextStore = createContext<context>({} as context);
 const layout = ({ children }: layout) => {
-  const [state, setState] = useState(0);
-  const handdleClick = () => {
-    setState(state + 1);
+  const { addProductToCard, cardState } = useCard();
+  const value = {
+    addProductToCard,
+    cardState,
   };
   return (
-    <ContextStore.Provider value={{
-      handdleClick,
-      state
-    }}>
-      {children}
-    </ContextStore.Provider>
+    <ContextStore.Provider value={value}>{children}</ContextStore.Provider>
   );
 };
 

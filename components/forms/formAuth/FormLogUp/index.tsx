@@ -10,6 +10,7 @@ import type { userDataLog } from "../../../../types/user";
 import InputAuthForLogUp from "../../../Inputs/InputAuth/InputAuthForLofUp";
 import { useContextUser } from "../../../../hooks/useContextUser";
 import { ButtonAuth } from "../../../Inputs/buttons/ButtonAuth";
+import { logUpWhitFacebook } from "../../../../services/auth/logInWhitFacebook";
 export type userDataLogUpForm = userDataLog & {
   confirmPassword: string;
 };
@@ -42,6 +43,15 @@ const FormLogUp = () => {
     window.localStorage.setItem("x-acces-token", dataLogUp.token);
     logAuth(dataLogUp.token);
     router.push("/");
+  };
+  const logUpFacebook = () => {
+    logUpWhitFacebook()
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
   return (
     <form className={styles.formAuth} onSubmit={handleSubmit(onSubmit)}>
@@ -89,6 +99,11 @@ const FormLogUp = () => {
         name="confirmPassword"
       />
       <ButtonAuth value="Crear cuenta" />
+      <input
+        type={"button"}
+        onClick={logUpFacebook}
+        value="Registrate con facebook"
+      />
     </form>
   );
 };
