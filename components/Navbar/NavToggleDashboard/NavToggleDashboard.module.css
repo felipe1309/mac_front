@@ -1,6 +1,44 @@
+@keyframes dashboard_active {
+  0% {
+    transform: translateY(-200%);
+    display: none;
+    z-index: -1;
+  }
+  100% {
+    transform: translateY(0%);
+    display: block;
+    z-index: 1;
+  }
+}
 .toggle_dashboard {
   bottom: 100%;
-  border-left: 3px solid var(--primary-color) ;
+  border-left: 3px solid var(--primary-color);
+  display: block;
+  animation: dashboard_active 0.3s normal;
+  position: relative;
+}
+
+@keyframes dashboard_desactive {
+  0% {
+    /* bottom: 100%;
+    border-left: 3px solid var(--primary-color);
+    display: block; */
+    transform: translateY(0%);
+  }
+  100% {
+    /* z-index: -1;
+    transform: translateY(-200%);
+    display: none; */
+    transform: translateY(-200%);
+    z-index: -1;
+  }
+}
+.toggle_dashboard_desactive {
+  display: none;
+  
+  transform: translateY(-200%); 
+  animation: dashboard_desactive .5s normal 0ms ;
+  position: relative;
 }
 .li {
   width: 100%;
@@ -8,6 +46,7 @@
   display: flex;
   flex-direction: column;
   height: auto;
+  position: relative;
 }
 .button {
   height: 50px;

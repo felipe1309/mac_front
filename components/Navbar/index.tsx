@@ -13,7 +13,7 @@ import styles from "./Navbar.module.css";
 import stylesGeneric from "./navbarStylesGenerics.module.css";
 import { useContextUser } from "../../hooks/useContextUser";
 import Link from "next/link";
-import NavToggleDashboard from "./NavToggleDashboard";
+import { NavToggleDashboard } from "./NavToggleDashboard";
 const Navbar = () => {
   const {
     authData: { auth },

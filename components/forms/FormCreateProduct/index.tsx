@@ -66,8 +66,6 @@ export const FormCreateProduct = () => {
         tipo="file"
         name="image"
       />
-      {urlImage ? <img src={urlImage} alt="" /> : null}
-
       <ButtonAuth value="Crear" />
     </form>
   );

@@ -1,6 +1,6 @@
-import { ButtonAddProductToCard } from "../../../../components/Inputs/buttons/ButtonAddProductToCard";
+import { FormAddToCard } from "../../../../components/forms/FormAddToCard";
 import { getProduct } from "../../../../services/store/getProduct";
-import { image } from "../../../../types/product";
+import { product } from "../../../../types/product";
 import style from "./cardProduct.module.css";
 type params = {
   idProduct: string;
@@ -9,7 +9,7 @@ type props = {
   params: params;
 };
 const page = async ({ params }: props) => {
-  const product = await getProduct(params.idProduct);
+  const product = await getProduct(params.idProduct) as product
   return (
     <main className={style.main}>
       <figure>
@@ -19,13 +19,7 @@ const page = async ({ params }: props) => {
         <h1>{product?.name}</h1>
         <p>{product?.description}</p>
         <span>{product?.value} Cop</span>
-        <ButtonAddProductToCard
-          _id={product?._id as string}
-          description={product?.description as string}
-          image={product?.image as image}
-          name={product?.name as string}
-          value={product?.value as number}
-        />
+        <FormAddToCard product={product} />
       </div>
     </main>
   );

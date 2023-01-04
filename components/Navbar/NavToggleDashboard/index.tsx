@@ -9,7 +9,7 @@ import { BsPlusSquare } from "react-icons/bs";
 type props = {
   toggleNav: boolean;
 };
-const NavToggleDashboard = ({ toggleNav }: props) => {
+export const NavToggleDashboard = ({ toggleNav }: props) => {
   const [toggleDashboard, setToggleDashboard] = useState(false);
   useEffect(() => {
     if (!toggleNav) {
@@ -26,15 +26,18 @@ const NavToggleDashboard = ({ toggleNav }: props) => {
         <span className={stylesGeneric.text}>Configuraciones</span>
         <BsArrowDown className={stylesGeneric.icon} />
       </button>
-      {toggleDashboard ? (
-        <ul className={styles.toggle_dashboard}>
-          <NavLink text="Crear Producto" href="/dashboard/createProduct">
-            <BsPlusSquare className={stylesGeneric.icon} />
-          </NavLink>
-        </ul>
-      ) : null}
+
+      <ul
+        className={`${
+          toggleDashboard
+            ? styles.toggle_dashboard
+            : styles.toggle_dashboard_desactive
+        }`}
+      >
+        <NavLink text="Crear Producto" href="/dashboard/createProduct">
+          <BsPlusSquare className={stylesGeneric.icon} />
+        </NavLink>
+      </ul>
     </li>
   );
 };
-
-export default NavToggleDashboard;

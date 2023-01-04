@@ -2,10 +2,10 @@
 import { layout } from "../../types/layout";
 import { createContext } from "react";
 import { product } from "../../types/product";
-import { useCard } from "../../hooks/useCard";
+import { productCard, useCard } from "../../hooks/useCard";
 type context = {
-  cardState: product[];
-  addProductToCard: (product: product) => void;
+  cardState: productCard[];
+  addProductToCard: (product: productCard) => void;
 };
 export const ContextStore = createContext<context>({} as context);
 const layout = ({ children }: layout) => {

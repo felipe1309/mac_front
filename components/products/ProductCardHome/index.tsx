@@ -2,7 +2,8 @@
 import type { product } from "../../../types/product";
 import Link from "next/link";
 import styles from "./productCardHome.module.css";
-export const ProductCardHome = ({ _id, image, name, value }: product) => {
+type props = Omit<product ,"description">
+export const ProductCardHome = ({ _id, image, name, value }: props) => {
   return (
     <Link href={`/card/${_id}`} className={styles.cardLink}>
       <figure>

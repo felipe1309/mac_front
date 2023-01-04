@@ -1,18 +1,13 @@
-"use client";
-import { useContextStore } from "../../../hooks/useContextStore";
-
+import { HeaderCard } from "../../../components/card/HeaderCard";
+import { ListProductCard } from "../../../components/card/ListProductCard";
+import style from "./cardPage.module.css";
 const page = () => {
-  const { cardState } = useContextStore();
   return (
-    <div className="card">
-      <ul>
-        {cardState.map((product) => (
-          <li key={product._id}>
-            {product.name}
-            <img src={product.image.url} alt="" />
-          </li>
-        ))}
-      </ul>
+    <div className={style.container}>
+      <div className={style.principalContent}>
+        <HeaderCard  />
+        <ListProductCard />
+      </div>
     </div>
   );
 };

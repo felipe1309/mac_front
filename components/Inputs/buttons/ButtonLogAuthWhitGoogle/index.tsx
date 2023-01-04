@@ -6,7 +6,7 @@ type props = {
 };
 export const ButtonLogAuthWhitGoogle = ({ haddleClick }: props) => {
   return (
-    <button className={styles.buttonGoogle}>
+    <button className={styles.buttonGoogle} onClick={haddleClick}>
       <FaGoogle /> Google
     </button>
   );

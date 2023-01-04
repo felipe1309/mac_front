@@ -20,7 +20,11 @@ export const InputCreateProduct = ({
         className={styles.input_auth}
         type={tipo}
         placeholder={placeholder}
-        {...register(name, { required: true })}
+        {...register(name, { required: true,
+          onChange(event) {
+              console.log(event)
+          },
+         })}
       />
     </div>
   );

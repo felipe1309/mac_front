@@ -1,0 +1,34 @@
+.listItem {
+    height: 250px;
+    width: 100%;
+    border-top: 2px solid var(--red-secondary) ;
+    border-bottom: 2px solid var(--red-secondary) ;
+    display: flex;
+    margin: 2rem 0;
+}
+.listItem figure {
+    height: 100%;
+    width: 250px;
+}
+.listItem figure img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.listItem > div {
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+}
+.listItem h3 {
+    font-size: var(--fz-03);
+    margin-bottom: 1rem ;
+}
+.listItem p {
+    font-weight: 600;
+    margin-bottom: .8rem;
+}
+.listItem span {
+    font-weight: 600;
+    margin-right: 20px;
+}

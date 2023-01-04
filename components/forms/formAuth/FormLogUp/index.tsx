@@ -1,5 +1,5 @@
 "use client";
-import { FormEvent,  useEffect } from "react";
+import { FormEvent, useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { logUp } from "../../../../services/auth/logUp";
 import { useRouter } from "next/navigation";
@@ -15,6 +15,7 @@ import { logUpWhitFacebook } from "../../../../services/auth/logInWhitFacebook";
 import { logUpWhitGoogle } from "../../../../services/auth/logUpWhitGoogle";
 import { ButtonLogAuthWhitFacebook } from "../../../Inputs/buttons/ButtonLogAuthWhitFacebook";
 import { ButtonLogAuthWhitGoogle } from "../../../Inputs/buttons/ButtonLogAuthWhitGoogle";
+import { logUpWith } from "../../../../services/auth/logUpWith";
 export type userDataLogUpForm = userDataLog & {
   confirmPassword: string;
 };
@@ -26,12 +27,12 @@ const FormLogUp = () => {
     watch,
     formState: { errors },
   } = useForm<userDataLogUpForm>();
-  const { logAuth } = useContextUser();
+  const { logAuth,authData } = useContextUser();
   useEffect(() => {
     if (window.localStorage.getItem("x-acces-token")) {
       router.replace("/");
     }
-  }, []);
+  }, [authData]);
 
   const onSubmit: SubmitHandler<userDataLogUpForm> = async ({
     email,
@@ -43,9 +44,6 @@ const FormLogUp = () => {
       email,
       name,
       password,
-      aditionalData: {
-        typeAuth: "normal",
-      },
     });
     window.localStorage.setItem("x-acces-token", dataLogUp.token);
     logAuth(dataLogUp.token);
@@ -62,17 +60,20 @@ const FormLogUp = () => {
       });
   };
   const logUpGoogle = async (e: FormEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     try {
       const googleCredentials = await logUpWhitGoogle();
-      const dataTokenLogUpWhitGoogle = await logUp({
-        email: googleCredentials.user.email as string,
-        name: googleCredentials.user.displayName as string,
-        aditionalData: {
-          typeAuth: "google",
-        },
-      });
-      window.localStorage.setItem("token", dataTokenLogUpWhitGoogle.token);
-      logAuth(dataTokenLogUpWhitGoogle.token);
+      const dataTokenLogUpWhitGoogle = await logUpWith(
+        googleCredentials.user.displayName as string,
+        googleCredentials.user.email as string,
+        "google"
+      );
+      window.localStorage.setItem(
+        "token",
+        dataTokenLogUpWhitGoogle.token as string
+      );
+      logAuth(dataTokenLogUpWhitGoogle.token as string);
+      router.push('/')
     } catch (error) {
       console.log(error);
     }
